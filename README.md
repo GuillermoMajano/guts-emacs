@@ -4,9 +4,11 @@
 
 Simple setup for new emacs users
 
-# Installation
+**Installation**
 
-you just have to put the files in your /.emacs.d
+```sh
+   git clone  ~/.emacs.d
+   ```
 
 # Why griffith emacs?
 
