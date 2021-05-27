@@ -15,18 +15,15 @@ https://github.com/be5invis/Iosevka/releases/download/v7.0.0-preview.4/ttf-iosev
 # Installation
 
 You must first clone or download the repository directly, this varies depending on what is most comfortable for you
-
 "git clone https://gitlab.com/matute_1/griffith-emacs.git"
 
 The next thing is to simply move the files to your /.emacs.d folder
 This step varies according to your OS
 
 in Windows it is simply to go to% appdata% and look for the folder .emacs.d
-
 In linux it is to go to your Home folder, there is the .emacs.d, if you don't see it just press Ctrl + H
 
 It should stay like this:
-
 ![Example5](/uploads/98dc844d1bf53eee987f9e93cd46594e/Example5.png)
 
 # Why griffith emacs?
