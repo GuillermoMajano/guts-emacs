@@ -18,9 +18,15 @@
 ;;Theme
 (use-package doom-themes
   :defer t
-  :init (load-theme 'doom-gruvbox-dark t))
- 
- ;;Number 
+  :init
+
+  ;;Dark
+(load-theme 'doom-gruvbox t))
+
+  ;;Light
+;;(load-theme 'doom-gruvbox-light t)) 
+
+;;Number 
 (use-package display-line-numbers
   :ensure nil
   :hook

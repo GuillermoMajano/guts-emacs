@@ -21,10 +21,10 @@
   :init
 
   ;;Dark
-(load-theme 'doom-gruvbox t))
+;;(load-theme 'doom-gruvbox t))
 
   ;;Light
-;;(load-theme 'doom-gruvbox-light t)) 
+(load-theme 'doom-gruvbox-light t)) 
 
 ;;Number 
 (use-package display-line-numbers
