@@ -7,7 +7,7 @@ Simple setup for new emacs users
 **Installation**
 
 ```sh
-   git clone  ~/.emacs.d
+   git clone https://gitlab.com/matute_1/griffith-emacs.git  ~/.emacs.d
    ```
 
 # Why griffith emacs?
