@@ -4,11 +4,22 @@
 
 Simple setup for new emacs users
 
-**Installation**
+# Instalation
+
+Just copy and paste this command in your terminal
 
 ```sh
    git clone https://gitlab.com/matute_1/griffith-emacs.git  ~/.emacs.d
    ```
+
+#  Dependences
+
+**Emacs**
+You need Emacs installed, preferably version 26 upwards
+
+**Font**
+You need the Iosevka SS09 font
+
 
 # Why griffith emacs?
 
