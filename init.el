@@ -10,12 +10,15 @@
 ;;(require 'vim)
 
 ;;GUI
-
 (require 'gui1)
 (require 'gui2)
 
 ;;Uses
 (require 'lsp-company-ivy)
+
+;;Company-lsp
+(require 'company-lsp)
+(push 'company-lsp company-backends) ;;Dont Touch this
 
 ;;Language
 
@@ -23,8 +26,17 @@
 ;;(require 'haskell) ;;HASKELL
 
 ;;Web
-(require 'web) ;;HTML/CSS/JS
+(require 'html) ;;HTML
+(require 'css) ;;CSS
+(require 'js) ;;JS
+;;(require 'sql) ;;MYSQL
+;;(require 'php) ;;PHP
+(require 'ts) ;;TS
 
+
+;;High Level
+;;(require 'python) ;;PYTHON
+;;(require' ruby) ;;RUBY
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

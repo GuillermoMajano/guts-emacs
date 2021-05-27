@@ -1,22 +1,32 @@
 (use-package company
-  :after lsp-mode
-  :hook (lsp-mode . company-mode)
-  :bind
-  (:map company-active-map
-  	("C-c z" . company-complete-selection))
-  (:map lsp-mode-map
-  	("C-c a" . company-indent-or-complete-common))
-  :custom
-  (company-idle-delay 0.0)
-  (company-minimum-prefix-length 1))
+ :ensure t
+ :config
+ (setq company-idle-delay 0.3)
+ (global-company-mode 1))
 
-(use-package lsp-mode
-  :commands (lsp lsp-deferred)
-  :init
-  (setq lsp-keymap-prefix "C-c l")
-  :config
-  (setq lsp-headerline-breadcrumb-enable nil)
-  (lsp-enable-which-key-integration t))
+ (use-package lsp-mode
+ :config
+ (setq lsp-prefer-flymake nil)
+ :hook (php-mode . lsp)
+ :commands lsp)
+
+ (use-package lsp-ui
+ :requires lsp-mode flycheck
+ :config
+ (setq lsp-ui-doc-enable t
+       lsp-ui-doc-use-childframe t
+       lsp-ui-doc-position ‘top
+       lsp-ui-doc-include-signature t
+       lsp-ui-sideline-enable nil
+       lsp-ui-flycheck-enable t
+       lsp-ui-flycheck-list-position ‘right
+       lsp-ui-flycheck-live-reporting t
+       lsp-ui-peek-enable t
+       lsp-ui-peek-list-width 60
+       lsp-ui-peek-peek-height 25
+       lsp-ui-sideline-enable nil)
+
+ (add-hook ‘lsp-mode-hook ‘lsp-ui-mode))
 
 (use-package ivy
   :bind
@@ -25,7 +35,9 @@
   :config
   (ivy-mode 1)
   (setq ivy-use-virtual-buffers nil)
-  (define-key read-expression-map (kbd "C-r") 'counsel-expression-history))(use-package counsel
+  (define-key read-expression-map (kbd "C-r") 'counsel-expression-history))
+
+(use-package counsel
   :bind
   ("M-x" . counsel-M-x)
   ("C-x C-m" . counsel-M-x)

@@ -40,7 +40,7 @@
    :config 
    (setq  centaur-tabs-set-bar 'under
 	   x-underline-at-descent-line t
-          centaur-tabs-style "box"
+          centaur-tabs-style "slant"
           centaur-tabs-set-icons t
           centaur-tabs-gray-out-icons 'buffer
           centaur-tabs-height 40
