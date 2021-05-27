@@ -20,11 +20,21 @@
   :defer t
   :init
 
+;;Gruvbox
+  
   ;;Dark
 ;;(load-theme 'doom-gruvbox t))
 
   ;;Light
 (load-theme 'doom-gruvbox-light t)) 
+
+;;Solarized
+
+  ;;Dark
+;;(load-theme 'doom-solarized-dark t))
+
+  ;;Light
+;;(load-theme 'doom-solarized-light t))
 
 ;;Number 
 (use-package display-line-numbers

@@ -11,8 +11,4 @@
   (require 'use-package)
   (setq use-package-always-ensure t)
 
-(use-package which-key
-  :ensure
-  :init)
-
 (provide 'base)

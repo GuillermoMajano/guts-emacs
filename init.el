@@ -15,15 +15,15 @@
 (require 'gui2)
 
 ;;Uses
-(require 'lsp-company)
+(require 'lsp-company-ivy)
 
 ;;Language
 
-   ;;Haskell
-      ;;(require 'haskell)
+;;Functional Programing 
+;;(require 'haskell) ;;HASKELL
 
-   ;;Web
-      ;;(require 'web)
+;;Web
+(require 'web) ;;HTML/CSS/JS
 
 
 (custom-set-variables
