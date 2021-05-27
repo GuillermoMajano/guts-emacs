@@ -12,5 +12,6 @@
   (setq use-package-always-ensure t)
 
 (use-package flycheck)
+(setq backup-directory-alist `(("." . "~/.saves")))
 
 (provide 'base)
