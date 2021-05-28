@@ -1,5 +1,3 @@
-(provide 'gui1)
-
 ;;Initial
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
@@ -13,28 +11,22 @@
 ;;Font
 (set-face-attribute 'default nil
                     :family "Iosevka SS09"
-                    :height 140)
+                    :height 120)
 
 ;;Theme
-(use-package doom-themes
+(use-package kaolin-themes
   :defer t
   :init
 
-;;Gruvbox
-  
-  ;;Dark
-;;(load-theme 'doom-gruvbox t))
+;;(load-theme 'kaolin-aurora t)) 
+;;(load-theme 'kaolin-bubblegum t)) 
+;;(load-theme 'kaolin-eclipse t))
+;;(load-theme 'kaolin-galaxy t))
+(load-theme 'kaolin-ocean t))
+;;(load-theme 'kaolin-temple t))
+;;(load-theme 'kaolin-valley-dark t))
+;;(load-theme 'kaolin-valley-light t))
 
-  ;;Light
-(load-theme 'doom-gruvbox-light t)) 
-
-;;Solarized
-
-  ;;Dark
-;;(load-theme 'doom-solarized-dark t))
-
-  ;;Light
-;;(load-theme 'doom-solarized-light t))
 
 ;;Number 
 (use-package display-line-numbers
@@ -42,3 +34,4 @@
   :hook
   ((prog-mode yaml-mode systemd-mode) . display-line-numbers-mode))
 
+(provide 'gui1)
