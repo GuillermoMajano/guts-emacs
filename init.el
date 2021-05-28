@@ -29,9 +29,10 @@
 (require 'html) ;;HTML
 (require 'css) ;;CSS
 (require 'js) ;;JS
+(require 'go) ;;GO
 ;;(require 'sql) ;;MYSQL
 ;;(require 'php) ;;PHP
-(require 'ts) ;;TS
+;;(require 'ts) ;;TS
 
 
 ;;High Level
