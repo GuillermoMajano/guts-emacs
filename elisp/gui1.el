@@ -14,6 +14,7 @@
                     :height 120)
 
 ;;Theme
+
 (use-package kaolin-themes
   :defer t
   :init
@@ -22,11 +23,17 @@
 ;;(load-theme 'kaolin-bubblegum t)) 
 ;;(load-theme 'kaolin-eclipse t))
 ;;(load-theme 'kaolin-galaxy t))
-(load-theme 'kaolin-ocean t))
+;;(load-theme 'kaolin-ocean t))
 ;;(load-theme 'kaolin-temple t))
-;;(load-theme 'kaolin-valley-dark t))
+(load-theme 'kaolin-valley-dark t))
 ;;(load-theme 'kaolin-valley-light t))
 
+;;(use-package doom-themes
+;;  :defer t
+;;  :init
+  
+;;(load-theme 'doom-gruvbox t))
+;;(load-theme 'doom-gruvbox-light t))
 
 ;;Number 
 (use-package display-line-numbers
