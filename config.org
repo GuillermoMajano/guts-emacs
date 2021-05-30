@@ -126,12 +126,12 @@
 #+END_SRC 
 ** Modeline
 #+BEGIN_SRC emacs-lisp
-   
-  (use-package powerline
+
+  (use-package spaceline
   :ensure
   :init
-  (require 'powerline)
-  (powerline-default-theme))
+  (require 'spaceline-config)
+  (spaceline-spacemacs-theme))
 
 #+END_SRC 
 ** Font
@@ -139,10 +139,17 @@
 
 (set-face-attribute 'default nil
                     :family "Iosevka SS09"
-                    :height 120)
+                    :height 130)
 
 #+END_SRC 
 
+** Display Number
+#+BEGIN_SRC emacs-lisp
+  (use-package display-line-numbers
+  :ensure nil
+  :hook
+  ((prog-mode yaml-mode systemd-mode) . display-line-numbers-mode))
+#+END_SRC
 * RPC
     #+BEGIN_SRC emacs-lisp
      (use-package elcord
@@ -189,7 +196,6 @@
   (lsp-enable-which-key-integration t))
 #+END_SRC 
    
-
 * Language
 ** TypeScript
    #+BEGIN_SRC emacs-lisp
@@ -218,3 +224,22 @@
    (use-package css-mode
      :hook (css-mode . lsp-deferred))
   #+END_SRC   
+  
+
+** Python
+   #+BEGIN_SRC emacs-lisp
+   (use-package python-mode
+  :ensure t
+  :hook (python-mode . lsp-deferred)
+  :custom
+  ;; NOTE: Set these if Python 3 is called "python3" on your system!
+  ;; (python-shell-interpreter "python3")
+  ;; (dap-python-executable "python3")
+  (dap-python-debugger 'debugpy)
+  :config
+  (require 'dap-python))
+
+(use-package pyvenv
+  :config
+  (pyvenv-mode 1))
+  #+END_SRC
