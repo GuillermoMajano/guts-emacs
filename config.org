@@ -1,3 +1,4 @@
+
 #+TITLE: Config General
 
 * Initial Setup
@@ -49,9 +50,9 @@
 ** Theme
 #+BEGIN_SRC emacs-lisp
  
-(use-package kaolin-themes
-  :defer t
-  :init
+;;(use-package kaolin-themes
+;;  :defer t
+;;  :init
 
 ;;(load-theme 'kaolin-aurora t)) 
 ;;(load-theme 'kaolin-bubblegum t)) 
@@ -59,15 +60,15 @@
 ;;(load-theme 'kaolin-galaxy t))
 ;;(load-theme 'kaolin-ocean t))
 ;;(load-theme 'kaolin-temple t))
-(load-theme 'kaolin-valley-dark t))
+;;(load-theme 'kaolin-valley-dark t))
 ;;(load-theme 'kaolin-valley-light t))
 
-;;(use-package doom-themes
-;;  :defer t
-;;  :init
+(use-package doom-themes
+  :defer t
+  :init
   
 ;;(load-theme 'doom-gruvbox t))
-;;(load-theme 'doom-gruvbox-light t))
+(load-theme 'doom-gruvbox-light t))
 
 #+END_SRC 
 ** Centaur Tabs
@@ -143,6 +144,13 @@
 
 #+END_SRC 
 
+* RPC
+  ** elcord
+    #+BEGIN_SRC emacs-lisp
+     (use-package elcord
+       :config
+       (elcord-mode)
+    #+END_SRC
 * Autocomplete
 ** Company
 #+BEGIN_SRC emacs-lisp
