@@ -1,4 +1,3 @@
-
 #+TITLE: Config General
 
 * Initial Setup
@@ -145,26 +144,77 @@
 #+END_SRC 
 
 * RPC
-  ** elcord
     #+BEGIN_SRC emacs-lisp
      (use-package elcord
        :config
-       (elcord-mode)
+       (elcord-mode))
     #+END_SRC
 * Autocomplete
 ** Company
 #+BEGIN_SRC emacs-lisp
 
-(use-package company
- :ensure t
- :config
- (setq company-idle-delay 0.3)
- (global-company-mode 1))
+  (use-package company
+    :after lsp-mode
+    :hook (lsp-mode . company-mode)
+    :bind
+    (:map company-active-map
+	  ("<tab>" . company-complete-selection))
+    (:map lsp-mode-map
+	  ("C-SPC" . company-indent-or-complete-common))
+    :custom
+    (company-idle-delay 0.0)
+    (company-minimum-prefix-length 1))
+
+  ;; Improves company UI
+  (use-package company-box
+    :hook (company-mode . company-box-mode))
+
+  (use-package which-key
+    :defer 0
+    :diminish which-key-mode
+    :config
+    (which-key-mode)
+    (setq which-key-idle-delay 0.5))
 
 #+END_SRC 
 * LSP
 ** lspmode
 #+BEGIN_SRC emacs-lisp
-;;(require 'languageserverprotocol)
+ (use-package lsp-mode
+  :commands (lsp lsp-deferred)
+  :init
+  (setq lsp-keymap-prefix "C-c l")
+  :config
+  (setq lsp-headerline-breadcrumb-enable nil)
+  (lsp-enable-which-key-integration t))
 #+END_SRC 
    
+
+* Language
+** TypeScript
+   #+BEGIN_SRC emacs-lisp
+   (use-package typescript-mode
+     :mode "\\.ts\\'"                      
+     :hook (typescript-mode . lsp-deferred) 
+     :config                                
+   (setq typescript-indent-level 2))
+  #+END_SRC
+  
+** JavaScript
+   #+BEGIN_SRC emacs-lisp
+   (use-package js2-mode
+     :mode "\\.js\\'"
+     :hook (js2-mode . lsp-deferred))  
+  #+END_SRC
+
+** HTML
+   #+BEGIN_SRC emacs-lisp
+    (use-package web-mode 
+        :hook (html-mode . lsp-deferred)) 
+  #+END_SRC
+
+** CSS
+   #+BEGIN_SRC emacs-lisp
+   (use-package css-mode
+     :hook (css-mode . lsp-deferred))
+  #+END_SRC   
