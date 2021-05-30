@@ -1,0 +1,149 @@
+#+TITLE: Config General
+
+* InitialConfig
+** Base
+   #+BEGIN_SRC emacs-lisp
+
+(require 'package)
+  (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+               ("melpa" . "https://melpa.org/packages/")))
+
+(package-initialize)
+  (unless (package-installed-p 'use-package)
+    (package-refresh-contents)
+    (package-install 'use-package))
+
+  (require 'use-package)
+  (setq use-package-always-ensure t)
+
+(use-package flycheck)
+(setq backup-directory-alist `(("." . "~/.saves")))
+
+(use-package ivy
+  :bind
+  ("C-x s" . swiper)
+  ("C-x C-r" . ivy-resume)
+  :config
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers nil)
+  (define-key read-expression-map (kbd "C-r") 'counsel-expression-history))
+
+(use-package counsel
+  :bind
+  ("M-x" . counsel-M-x)
+  ("C-x C-m" . counsel-M-x)
+  ("C-x C-f" . counsel-find-file)
+  ("C-x c k" . counsel-yank-pop))
+
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(menu-bar-mode -1)
+
+(use-package display-line-numbers
+  :ensure nil
+  :hook
+  ((prog-mode yaml-mode systemd-mode) . display-line-numbers-mode))
+
+   #+END_SRC emacs-lisp
+* GUI
+** Theme
+#+BEGIN_SRC emacs-lisp
+ 
+ (use-package kaolin-themes
+   :defer t
+   :init
+   (loadtheme 'kaolin-valley-dark))
+
+#+END_SRC emacs-lisp
+** Centaur Tabs
+#+BEGIN_SRC emacs-lisp
+  
+  (use-package centaur-tabs
+   :ensure t
+   :config 
+   (setq  centaur-tabs-set-bar 'under
+	   x-underline-at-descent-line t
+          centaur-tabs-style "bar"
+          centaur-tabs-set-icons t
+          centaur-tabs-gray-out-icons 'buffer
+          centaur-tabs-height 35
+          centaur-tabs-set-modified-marker t
+          centaur-tabs-modifier-marker "*")
+   (centaur-tabs-mode t))
+
+#+END_SRC emacs-lisp
+** Treemacs
+#+BEGIN_SRC emacs-lisp
+  
+(use-package treemacs
+  :ensure t
+  :bind
+  (:map global-map
+	([f8] . treemacs-select-window)
+	("C-<f8>" . treemacs))
+  :config
+  (setq treemacs-is-never-other-window t))
+
+(use-package treemacs-projectile
+  :after treemacs projectile
+  :ensure t)
+
+(use-package treemacs-all-the-icons
+  :ensure t)
+
+(treemacs-load-theme "all-the-icons")
+(setq doom-themes-treemacs-theme "doom-colors") 
+
+#+END_SRC emacs-lisp
+** Dashboard
+#+BEGIN_SRC emacs-lisp
+ 
+ (use-package dashboard
+  :config
+  (setq dashboard-show-shortcuts nil)
+  (setq dashboard-center-content nil)
+  (setq dashboard-set-file-icons t)
+  (setq dashboard-set-heading-icons t)
+  (setq dashboard-startup-banner "~/.emacs.d/logo/logo.png")
+  (setq dashboard-banner-logo-title "In memory of a great, Kentarō Miura")
+  )
+:config
+  (dashboard-setup-startup-hook)
+
+#+END_SRC emacs-lisp
+** Modeline
+#+BEGIN_SRC emacs-lisp
+   
+  (use-package powerline
+  :ensure
+  :init
+  (require 'powerline)
+  (powerline-default-theme))
+
+#+END_SRC emacs-lisp
+** Font
+#+BEGIN_SRC emacs-lisp
+
+(set-face-attribute 'default nil
+                    :family "Iosevka SS09"
+                    :height 120)
+
+#+END_SRC emacs-lisp
+
+* Autocomplete
+** Company
+#+BEGIN_SRC emacs-lisp
+
+(use-package company
+ :ensure t
+ :config
+ (setq company-idle-delay 0.3)
+ (global-company-mode 1))
+
+#+END_SRC emacs-lisp
+* LSP
+** lspmode
+#+BEGIN_SRC emacs-lisp
+(require 'languageserverprotocol)
+#+END_SRC emacs-lisp
+   
