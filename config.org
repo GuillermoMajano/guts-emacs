@@ -1,11 +1,12 @@
 #+TITLE: Config General
 
-* InitialConfig
-** Base
-   #+BEGIN_SRC emacs-lisp
+* Initial Setup
+#+BEGIN_SRC emacs-lisp
 
 (require 'package)
+
   (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+                ("org" . "https://orgmode.org/elpa/")
                ("melpa" . "https://melpa.org/packages/")))
 
 (package-initialize)
@@ -35,26 +36,40 @@
   ("C-x C-f" . counsel-find-file)
   ("C-x c k" . counsel-yank-pop))
 
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
-(menu-bar-mode -1)
 
-(use-package display-line-numbers
-  :ensure nil
-  :hook
-  ((prog-mode yaml-mode systemd-mode) . display-line-numbers-mode))
+#+END_SRC
 
-   #+END_SRC emacs-lisp
 * GUI
+** guiclassic
+   #+BEGIN_SRC emacs-lisp
+   (tool-bar-mode -1)
+   (scroll-bar-mode -1)
+   (menu-bar-mode -1)
+   #+END_SRC
 ** Theme
 #+BEGIN_SRC emacs-lisp
  
- (use-package kaolin-themes
-   :defer t
-   :init
-   (loadtheme 'kaolin-valley-dark))
+(use-package kaolin-themes
+  :defer t
+  :init
 
-#+END_SRC emacs-lisp
+;;(load-theme 'kaolin-aurora t)) 
+;;(load-theme 'kaolin-bubblegum t)) 
+;;(load-theme 'kaolin-eclipse t))
+;;(load-theme 'kaolin-galaxy t))
+;;(load-theme 'kaolin-ocean t))
+;;(load-theme 'kaolin-temple t))
+(load-theme 'kaolin-valley-dark t))
+;;(load-theme 'kaolin-valley-light t))
+
+;;(use-package doom-themes
+;;  :defer t
+;;  :init
+  
+;;(load-theme 'doom-gruvbox t))
+;;(load-theme 'doom-gruvbox-light t))
+
+#+END_SRC 
 ** Centaur Tabs
 #+BEGIN_SRC emacs-lisp
   
@@ -71,7 +86,7 @@
           centaur-tabs-modifier-marker "*")
    (centaur-tabs-mode t))
 
-#+END_SRC emacs-lisp
+#+END_SRC 
 ** Treemacs
 #+BEGIN_SRC emacs-lisp
   
@@ -94,7 +109,7 @@
 (treemacs-load-theme "all-the-icons")
 (setq doom-themes-treemacs-theme "doom-colors") 
 
-#+END_SRC emacs-lisp
+#+END_SRC 
 ** Dashboard
 #+BEGIN_SRC emacs-lisp
  
@@ -105,12 +120,10 @@
   (setq dashboard-set-file-icons t)
   (setq dashboard-set-heading-icons t)
   (setq dashboard-startup-banner "~/.emacs.d/logo/logo.png")
-  (setq dashboard-banner-logo-title "In memory of a great, Kentarō Miura")
-  )
-:config
+  (setq dashboard-banner-logo-title "In memory of a great, Kentarō Miura"))
   (dashboard-setup-startup-hook)
 
-#+END_SRC emacs-lisp
+#+END_SRC 
 ** Modeline
 #+BEGIN_SRC emacs-lisp
    
@@ -120,7 +133,7 @@
   (require 'powerline)
   (powerline-default-theme))
 
-#+END_SRC emacs-lisp
+#+END_SRC 
 ** Font
 #+BEGIN_SRC emacs-lisp
 
@@ -128,7 +141,7 @@
                     :family "Iosevka SS09"
                     :height 120)
 
-#+END_SRC emacs-lisp
+#+END_SRC 
 
 * Autocomplete
 ** Company
@@ -140,10 +153,10 @@
  (setq company-idle-delay 0.3)
  (global-company-mode 1))
 
-#+END_SRC emacs-lisp
+#+END_SRC 
 * LSP
 ** lspmode
 #+BEGIN_SRC emacs-lisp
-(require 'languageserverprotocol)
-#+END_SRC emacs-lisp
+;;(require 'languageserverprotocol)
+#+END_SRC 
    

@@ -1,1 +1,0 @@
-("~/.emacs.d/" "~/neku-web/" "~/Tarea/")
