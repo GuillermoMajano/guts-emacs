@@ -21,6 +21,13 @@
   (setq backup-directory-alist `(("." . "~/.saves")))
 
 
+  (setq skeleton-pair t)
+  (global-set-key "[" 'skeleton-pair-insert-maybe)
+  (global-set-key "(" 'skeleton-pair-insert-maybe)
+  (global-set-key "{" 'skeleton-pair-insert-maybe)
+  (global-set-key "'" 'skeleton-pair-insert-maybe)
+  (global-set-key "\"" 'skeleton-pair-insert-maybe)
+
 #+END_SRC
 ** Counsel
 #+BEGIN_SRC emacs-lisp
@@ -48,6 +55,17 @@
 
 #+END_SRC
 
+** Which Key
+   #+BEGIN_SRC emacs-lisp
+
+(use-package which-key
+  :defer 0
+  :diminish which-key-mode
+  :config
+  (which-key-mode)
+  (setq which-key-idle-delay 1))
+
+#+END_SRC
 ** Elisp Files
 #+BEGIN_SRC emacs-lisp
  (add-to-list 'load-path (concat user-emacs-directory "elisp"))
@@ -251,7 +269,8 @@
    
 * Language
 ** Web
-*** TypeScript
+*** Frontend
+**** TypeScript
    #+BEGIN_SRC emacs-lisp
    (use-package typescript-mode
      :mode "\\.ts\\'"                      
@@ -260,24 +279,27 @@
    (setq typescript-indent-level 2))
   #+END_SRC
   
-*** JavaScript
+**** JavaScript
    #+BEGIN_SRC emacs-lisp
    (use-package js2-mode
      :mode "\\.js\\'"
      :hook (js2-mode . lsp-deferred))  
   #+END_SRC
 
-*** HTML
+**** HTML
    #+BEGIN_SRC emacs-lisp
     (use-package web-mode 
         :hook (html-mode . lsp-deferred)) 
   #+END_SRC
 
-*** CSS
+**** CSS
+     
    #+BEGIN_SRC emacs-lisp
    (use-package css-mode
      :hook (css-mode . lsp-deferred))
   #+END_SRC   
+
+*** Backend
 
 ** Low Level Programing
 *** C/C++
