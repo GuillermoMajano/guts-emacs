@@ -149,11 +149,11 @@
   ((prog-mode yaml-mode systemd-mode) . display-line-numbers-mode))
 #+END_SRC
 * RPC
-** Elcord
+** RPC
     #+BEGIN_SRC emacs-lisp
-      (require 'griffithrpc)
-      (elcord-mode)
-    #+END_SRC
+      (load-file "~/.emacs.d/elisp/discord-emacs.el")
+      (discord-emacs-run "384815451978334208")
+     #+END_SRC
 * Autocomplete
 ** Company
 #+BEGIN_SRC emacs-lisp
@@ -299,14 +299,12 @@
 
     #+END_SRC
 
-**+
 ** Hight Level Programing
 *** Python
     #+BEGIN_SRC emacs-lisp
 
    (use-package python-mode
      :ensure t
-      :straight t
        :defer t
         :hook (python-mode . lsp-deferred)
         :custom
