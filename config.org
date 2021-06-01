@@ -20,7 +20,6 @@
 
   (setq backup-directory-alist `(("." . "~/.saves")))
 
-
   (setq skeleton-pair t)
   (global-set-key "[" 'skeleton-pair-insert-maybe)
   (global-set-key "(" 'skeleton-pair-insert-maybe)
@@ -70,108 +69,25 @@
 #+BEGIN_SRC emacs-lisp
  (add-to-list 'load-path (concat user-emacs-directory "elisp"))
  #+END_SRC
-* GUI
-** guiclassic
-   #+BEGIN_SRC emacs-lisp
-   (tool-bar-mode -1)
-   (scroll-bar-mode -1)
-   (menu-bar-mode -1)
-   #+END_SRC
-** Theme
-#+BEGIN_SRC emacs-lisp
-
-(use-package chocolate-theme
-  :ensure t
-  :config
-  (load-theme 'chocolate t))
-
-#+END_SRC 
-** Centaur Tabs
-#+BEGIN_SRC emacs-lisp
-  
-  (use-package centaur-tabs
-   :ensure t
-   :config 
-   (setq  centaur-tabs-set-bar 'under
-	  x-underline-at-descent-line t
-          centaur-tabs-style "bar"
-          centaur-tabs-set-icons t
-          centaur-tabs-gray-out-icons 'buffer
-          centaur-tabs-height 40
-          centaur-tabs-set-modified-marker t
-          centaur-tabs-modifier-marker "*")
-   (centaur-tabs-mode t))
-
-#+END_SRC 
-** Treemacs
-#+BEGIN_SRC emacs-lisp
-  
-(use-package treemacs
-  :ensure t
-  :bind
-  (:map global-map
-	([f8] . treemacs-select-window)
-	("C-<f8>" . treemacs))
-  :config
-  (setq treemacs-is-never-other-window t))
-
-(use-package treemacs-projectile
-  :after treemacs projectile
-  :ensure t)
-
-(use-package treemacs-all-the-icons
-  :ensure t)
-
-(treemacs-load-theme "all-the-icons")
-(setq doom-themes-treemacs-theme "doom-colors") 
-
-#+END_SRC 
-** Dashboard
-#+BEGIN_SRC emacs-lisp
- 
- (use-package dashboard
-  :config
-  (setq dashboard-show-shortcuts nil)
-  (setq dashboard-center-content nil)
-  (setq dashboard-set-file-icons t)
-  (setq dashboard-set-heading-icons t)
-  (setq dashboard-startup-banner "~/.emacs.d/logo/logo.png")
-  (setq dashboard-banner-logo-title "In memory of a great, Kentarō Miura"))
-  (dashboard-setup-startup-hook)
-
-#+END_SRC 
-** Modeline
-#+BEGIN_SRC emacs-lisp
-
-  (use-package spaceline
-  :ensure
-  :init
-  (require 'spaceline-config)
-  (spaceline-spacemacs-theme))
-
-#+END_SRC 
-** Font
-#+BEGIN_SRC emacs-lisp
-
-(set-face-attribute 'default nil
-                    :family "Iosevka SS09"
-                    :height 130)
-
-#+END_SRC 
-
-** Display Number
-#+BEGIN_SRC emacs-lisp
-  (use-package display-line-numbers
-  :ensure nil
-  :hook
-  ((prog-mode yaml-mode systemd-mode) . display-line-numbers-mode))
-#+END_SRC
 * RPC
 ** RPC
     #+BEGIN_SRC emacs-lisp
       (load-file "~/.emacs.d/elisp/discord-emacs.el")
       (discord-emacs-run "384815451978334208")
      #+END_SRC
+* Git
+** Magit
+   #+BEGIN_SRC emacs-lisp
+
+  (use-package magit
+    :bind (("C-x g" . magit-status)
+	   ("C-M-;" . magit-status)))
+
+  (use-package magit-todos
+    :defer t)
+
+   #+END_SRC
+
 * Autocomplete
 ** Company
 #+BEGIN_SRC emacs-lisp
@@ -187,6 +103,12 @@
 		("<tab>" . company-complete-selection))
 	  (:map lsp-mode-map
 		("<tab>" . company-indent-or-complete-common)))
+
+
+    (use-package company-anaconda 
+      :defer
+      :after company
+      :config (add-to-list 'company-backends 'company-anaconda))
 
 #+END_SRC
 
@@ -238,6 +160,7 @@
 ** Yasnippet
    
     #+BEGIN_SRC emacs-lisp
+
       (use-package typescript-mode
 	:mode "\\.ts\\'"                      
 	:hook (typescript-mode . lsp-deferred) 
@@ -253,17 +176,17 @@
    
    #+BEGIN_SRC emacs-lisp
 
-  (add-hook 'after-init-hook 'global-company-mode)
-  (use-package company
-    :after lsp-mode
-    ;; :hook (after-init-hook . global-company-mode)
-    :config
-    (company-tng-mode 0)
-    :custom (company-minimum-prefix-length 2)
-    :bind (:map company-active-map
-		("<tab>" . company-complete-selection))
-	  (:map lsp-mode-map
-		("<tab>" . company-indent-or-complete-common)))
+     (add-hook 'after-init-hook 'global-company-mode)
+     (use-package company
+       :after lsp-mode
+       ;; :hook (after-init-hook . global-company-mode)
+       :config
+       (company-tng-mode 0)
+       :custom (company-minimum-prefix-length 2)
+       :bind (:map company-active-map
+		   ("<tab>" . company-complete-selection))
+	     (:map lsp-mode-map
+		   ("<tab>" . company-indent-or-complete-common)))
 
 #+END_SRC
    
@@ -300,7 +223,15 @@
   #+END_SRC   
 
 *** Backend
+**** PHP
+  #+BEGIN_SRC emacs-lisp
 
+  (use-package company-php
+  :defer
+  :after company)
+
+  #+END_SRC
+ 
 ** Low Level Programing
 *** C/C++
    #+BEGIN_SRC emacs-lisp
@@ -335,6 +266,26 @@
   (setq python-shell-interpreter "python3")
 
     #+END_SRC
+*** Lua
+     #+BEGIN_SRC emacs-lisp
+     
+    (use-package lua-mode
+     :ensure t)
+
+    (use-package company-lua
+      :ensure t)
+
+         #+END_SRC
+*** Ruby
+  #+BEGIN_SRC emacs-lisp
+
+    (use-package robe 
+      :ensure t
+      :after company
+      :config (add-to-list 'company-backends 'company-robe)
+	    (add-hook 'ruby-mode-hook 'robe-mode))
+
+  #+END_SRC
 ** Functional Programing
 *** Haskell
    #+BEGIN_SRC emacs-lisp
@@ -349,3 +300,105 @@
 
    #+END_SRC
 
+
+* GUI
+** Guiclassic
+   #+BEGIN_SRC emacs-lisp
+   (tool-bar-mode -1)
+   (scroll-bar-mode -1)
+   (menu-bar-mode -1)
+   #+END_SRC
+
+** Theme
+#+BEGIN_SRC emacs-lisp
+
+  (use-package doom-themes
+  :config
+  (load-theme 'doom-city-lights t))
+
+#+END_SRC 
+** Centaur Tabs
+#+BEGIN_SRC emacs-lisp
+  
+  (use-package centaur-tabs
+   :ensure t
+   :config 
+   (setq  centaur-tabs-set-bar 'under
+	  x-underline-at-descent-line t
+          centaur-tabs-style "bar"
+          centaur-tabs-set-icons t
+          centaur-tabs-gray-out-icons 'buffer
+          centaur-tabs-height 40
+          centaur-tabs-set-modified-marker t
+          centaur-tabs-modifier-marker "*")
+   (centaur-tabs-mode t))
+
+#+END_SRC 
+** Treemacs
+#+BEGIN_SRC emacs-lisp
+
+  (use-package treemacs
+    :ensure t
+    :bind
+    (:map global-map
+	  ([f8] . treemacs-select-window)
+	  ("C-<f8>" . treemacs))
+    :config
+    (setq treemacs-is-never-other-window t))
+
+  (use-package treemacs-projectile
+    :after treemacs projectile
+    :ensure t)
+
+  (use-package treemacs-all-the-icons
+    :ensure t)
+
+  (treemacs-load-theme "all-the-icons")
+  (setq doom-themes-treemacs-theme "doom-colors")
+
+(dolist (mode '(treemacs-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 0))))
+
+#+END_SRC 
+** Dashboard
+#+BEGIN_SRC emacs-lisp
+ 
+ (use-package dashboard
+  :config
+  (setq dashboard-show-shortcuts nil)
+  (setq dashboard-center-content nil)
+  (setq dashboard-set-file-icons t)
+  (setq dashboard-set-heading-icons t)
+  (setq dashboard-startup-banner "~/.emacs.d/logo/logo.png")
+  (setq dashboard-banner-logo-title "In memory of a great, Kentarō Miura"))
+  (dashboard-setup-startup-hook)
+
+#+END_SRC 
+** Modeline
+#+BEGIN_SRC emacs-lisp
+
+  (use-package spaceline
+  :ensure
+  :init
+  (require 'spaceline-config)
+  (spaceline-spacemacs-theme))
+
+#+END_SRC 
+** Font
+#+BEGIN_SRC emacs-lisp
+
+(set-face-attribute 'default nil
+                    :family "Iosevka SS09"
+                    :height 120)
+
+#+END_SRC 
+
+** Display
+   Number
+#+BEGIN_SRC emacs-lisp
+
+(column-number-mode)
+(global-display-line-numbers-mode t)
+(setq display-line-numbers-type 'relative)
+
+#+END_SRC
