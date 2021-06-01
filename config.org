@@ -1,44 +1,57 @@
 #+TITLE: Config General
 
 * Initial Setup
+** Base  
 #+BEGIN_SRC emacs-lisp
 
-(require 'package)
+  (require 'package)
 
-  (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-                ("org" . "https://orgmode.org/elpa/")
-               ("melpa" . "https://melpa.org/packages/")))
+    (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+		  ("org" . "https://orgmode.org/elpa/")
+		 ("melpa" . "https://melpa.org/packages/")))
 
-(package-initialize)
-  (unless (package-installed-p 'use-package)
-    (package-refresh-contents)
-    (package-install 'use-package))
+  (package-initialize)
+    (unless (package-installed-p 'use-package)
+      (package-refresh-contents)
+      (package-install 'use-package))
 
-  (require 'use-package)
-  (setq use-package-always-ensure t)
+    (require 'use-package)
+    (setq use-package-always-ensure t)
 
-(use-package flycheck)
-(setq backup-directory-alist `(("." . "~/.saves")))
-
-(use-package ivy
-  :bind
-  ("C-x s" . swiper)
-  ("C-x C-r" . ivy-resume)
-  :config
-  (ivy-mode 1)
-  (setq ivy-use-virtual-buffers nil)
-  (define-key read-expression-map (kbd "C-r") 'counsel-expression-history))
-
-(use-package counsel
-  :bind
-  ("M-x" . counsel-M-x)
-  ("C-x C-m" . counsel-M-x)
-  ("C-x C-f" . counsel-find-file)
-  ("C-x c k" . counsel-yank-pop))
+  (setq backup-directory-alist `(("." . "~/.saves")))
 
 
 #+END_SRC
+** Counsel
+#+BEGIN_SRC emacs-lisp
 
+  (use-package counsel
+      :bind
+      ("M-x" . counsel-M-x)
+      ("C-x C-m" . counsel-M-x)
+      ("C-x C-f" . counsel-find-file)
+      ("C-x c k" . counsel-yank-pop))
+
+#+END_SRC
+
+** Ivy
+#+BEGIN_SRC emacs-lisp
+
+  (use-package ivy
+      :bind
+      ("C-x s" . swiper)
+      ("C-x C-r" . ivy-resume)
+      :config
+      (ivy-mode 1)
+      (setq ivy-use-virtual-buffers nil)
+      (define-key read-expression-map (kbd "C-r") 'counsel-expression-history))
+
+#+END_SRC
+
+** Elisp Files
+#+BEGIN_SRC emacs-lisp
+ (add-to-list 'load-path (concat user-emacs-directory "elisp"))
+ #+END_SRC
 * GUI
 ** guiclassic
    #+BEGIN_SRC emacs-lisp
@@ -48,26 +61,11 @@
    #+END_SRC
 ** Theme
 #+BEGIN_SRC emacs-lisp
- 
-;;(use-package kaolin-themes
-;;  :defer t
-;;  :init
 
-;;(load-theme 'kaolin-aurora t)) 
-;;(load-theme 'kaolin-bubblegum t)) 
-;;(load-theme 'kaolin-eclipse t))
-;;(load-theme 'kaolin-galaxy t))
-;;(load-theme 'kaolin-ocean t))
-;;(load-theme 'kaolin-temple t))
-;;(load-theme 'kaolin-valley-dark t))
-;;(load-theme 'kaolin-valley-light t))
-
-(use-package doom-themes
-  :defer t
-  :init
-  
-;;(load-theme 'doom-gruvbox t))
-(load-theme 'doom-gruvbox-light t))
+(use-package chocolate-theme
+  :ensure t
+  :config
+  (load-theme 'chocolate t))
 
 #+END_SRC 
 ** Centaur Tabs
@@ -77,11 +75,11 @@
    :ensure t
    :config 
    (setq  centaur-tabs-set-bar 'under
-	   x-underline-at-descent-line t
+	  x-underline-at-descent-line t
           centaur-tabs-style "bar"
           centaur-tabs-set-icons t
           centaur-tabs-gray-out-icons 'buffer
-          centaur-tabs-height 35
+          centaur-tabs-height 40
           centaur-tabs-set-modified-marker t
           centaur-tabs-modifier-marker "*")
    (centaur-tabs-mode t))
@@ -151,53 +149,109 @@
   ((prog-mode yaml-mode systemd-mode) . display-line-numbers-mode))
 #+END_SRC
 * RPC
+** Elcord
     #+BEGIN_SRC emacs-lisp
-     (use-package elcord
-       :config
-       (elcord-mode))
+      (require 'griffithrpc)
+      (elcord-mode)
     #+END_SRC
 * Autocomplete
 ** Company
 #+BEGIN_SRC emacs-lisp
 
+  (add-hook 'after-init-hook 'global-company-mode)
   (use-package company
     :after lsp-mode
-    :hook (lsp-mode . company-mode)
-    :bind
-    (:map company-active-map
-	  ("<tab>" . company-complete-selection))
-    (:map lsp-mode-map
-	  ("C-SPC" . company-indent-or-complete-common))
-    :custom
-    (company-idle-delay 0.0)
-    (company-minimum-prefix-length 1))
-
-  ;; Improves company UI
-  (use-package company-box
-    :hook (company-mode . company-box-mode))
-
-  (use-package which-key
-    :defer 0
-    :diminish which-key-mode
+    ;; :hook (after-init-hook . global-company-mode)
     :config
-    (which-key-mode)
-    (setq which-key-idle-delay 0.5))
+    (company-tng-mode 0)
+    :custom (company-minimum-prefix-length 2)
+    :bind (:map company-active-map
+		("<tab>" . company-complete-selection))
+	  (:map lsp-mode-map
+		("<tab>" . company-indent-or-complete-common)))
 
-#+END_SRC 
+#+END_SRC
+
 * LSP
-** lspmode
+** lsp-mode
 #+BEGIN_SRC emacs-lisp
- (use-package lsp-mode
-  :commands (lsp lsp-deferred)
-  :init
-  (setq lsp-keymap-prefix "C-c l")
-  :config
-  (setq lsp-headerline-breadcrumb-enable nil)
-  (lsp-enable-which-key-integration t))
-#+END_SRC 
+
+  (use-package lsp-mode
+    :defer t
+    :commands (lsp lsp-deferred)
+    :init
+    (setq lsp-keymap-prefix "C-c l")
+    :config
+    (lsp-enable-which-key-integration t))
+
+#+END_SRC
+
+** lsp-treemacs
+
+   #+BEGIN_SRC emacs-lisp
+
+     (use-package lsp-treemacs
+      :after lsp)
+
+   #+END_SRC
+
+** lsp-ui
+
+   #+BEGIN_SRC emacs-lisp
+
+  (use-package lsp-ui
+    :hook (lsp-mode . lsp-ui-mode)
+    :custom
+    (lsp-ui-doc-position 'bottom))
+
+   #+END_SRC
+   
+* Sintax Check
+** Flycheck
+
+   #+BEGIN_SRC emacs-lisp
+   
+(use-package flycheck
+    :hook (lsp-deferred . flycheck-mode))
+
+    #+END_SRC
+
+* Snippets
+** Yasnippet
+   
+    #+BEGIN_SRC emacs-lisp
+      (use-package typescript-mode
+	:mode "\\.ts\\'"                      
+	:hook (typescript-mode . lsp-deferred) 
+	:config                                
+	(setq typescript-indent-level 2))
+
+	  (use-package yasnippet-snippets)
+
+  #+END_SRC
+  
+* Markdown
+** markdown-mode
+   
+   #+BEGIN_SRC emacs-lisp
+
+  (add-hook 'after-init-hook 'global-company-mode)
+  (use-package company
+    :after lsp-mode
+    ;; :hook (after-init-hook . global-company-mode)
+    :config
+    (company-tng-mode 0)
+    :custom (company-minimum-prefix-length 2)
+    :bind (:map company-active-map
+		("<tab>" . company-complete-selection))
+	  (:map lsp-mode-map
+		("<tab>" . company-indent-or-complete-common)))
+
+#+END_SRC
    
 * Language
-** TypeScript
+** Web
+*** TypeScript
    #+BEGIN_SRC emacs-lisp
    (use-package typescript-mode
      :mode "\\.ts\\'"                      
@@ -206,40 +260,72 @@
    (setq typescript-indent-level 2))
   #+END_SRC
   
-** JavaScript
+*** JavaScript
    #+BEGIN_SRC emacs-lisp
    (use-package js2-mode
      :mode "\\.js\\'"
      :hook (js2-mode . lsp-deferred))  
   #+END_SRC
 
-** HTML
+*** HTML
    #+BEGIN_SRC emacs-lisp
     (use-package web-mode 
         :hook (html-mode . lsp-deferred)) 
   #+END_SRC
 
-** CSS
+*** CSS
    #+BEGIN_SRC emacs-lisp
    (use-package css-mode
      :hook (css-mode . lsp-deferred))
   #+END_SRC   
-  
 
-** Python
+** Low Level Programing
+*** C/C++
    #+BEGIN_SRC emacs-lisp
-   (use-package python-mode
-  :ensure t
-  :hook (python-mode . lsp-deferred)
-  :custom
-  ;; NOTE: Set these if Python 3 is called "python3" on your system!
-  ;; (python-shell-interpreter "python3")
-  ;; (dap-python-executable "python3")
-  (dap-python-debugger 'debugpy)
-  :config
-  (require 'dap-python))
 
-(use-package pyvenv
-  :config
-  (pyvenv-mode 1))
-  #+END_SRC
+     (use-package c-mode
+       :ensure nil
+       :hook (c-mode . lsp-deferred))
+
+    #+END_SRC
+    
+*** Rust
+    
+   #+BEGIN_SRC emacs-lisp
+
+   (use-package rustic
+    :mode ("\\.rs\\'" . rustic-mode)
+    :hook (rustic-mode . lsp-deferred))
+
+    #+END_SRC
+
+**+
+** Hight Level Programing
+*** Python
+    #+BEGIN_SRC emacs-lisp
+
+   (use-package python-mode
+     :ensure t
+      :straight t
+       :defer t
+        :hook (python-mode . lsp-deferred)
+        :custom
+     (python-shell-interpreter "python3"))
+
+  (setq python-shell-interpreter "python3")
+
+    #+END_SRC
+** Functional Programing
+*** Haskell
+   #+BEGIN_SRC emacs-lisp
+
+     (use-package haskell-mode
+	    :hook (haskell-mode . #'lsp-deferred)
+	    :hook (haskell-literate-mode . #'lsp-deferred))
+	  (use-package lsp-haskell)
+	  ;; loading and unloading is slow, so just disabling
+	  (with-eval-after-load "flycheck"
+	    (add-to-list 'flycheck-disabled-checkers 'haskell-stack-ghc))
+
+   #+END_SRC
+
