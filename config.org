@@ -192,7 +192,7 @@
      :hook (css-mode . lsp-deferred))
   #+END_SRC   
 
-**** Vue.js
+#**** Vue.js
 
   #+BEGIN_SRC emacs-lisp
 
@@ -205,7 +205,7 @@
 
   
 *** Backend
-**** PHP
+#**** PHP
   #+BEGIN_SRC emacs-lisp
 
   (use-package company-php
@@ -214,7 +214,7 @@
 
   #+END_SRC
 
-**** Go
+#**** Go
 
   #+BEGIN_SRC emacs-lisp
 
@@ -226,7 +226,7 @@
   #+END_SRC
   
 ** Low Level Programing
-*** C/C++
+#*** C/C++
    #+BEGIN_SRC emacs-lisp
 
      (use-package c-mode
@@ -235,7 +235,7 @@
 
     #+END_SRC
     
-*** Rust
+#*** Rust
     
    #+BEGIN_SRC emacs-lisp
 
@@ -246,7 +246,7 @@
     #+END_SRC
 
 ** Hight Level Programing
-*** Python
+#*** Python
     #+BEGIN_SRC emacs-lisp
 
    (use-package python-mode
@@ -259,7 +259,7 @@
   (setq python-shell-interpreter "python3")
 
     #+END_SRC
-*** Lua
+#*** Lua
      #+BEGIN_SRC emacs-lisp
      
     (use-package lua-mode
@@ -269,7 +269,7 @@
       :ensure t)
 
          #+END_SRC
-*** Ruby
+#*** Ruby
   #+BEGIN_SRC emacs-lisp
 
     (use-package robe 
@@ -280,7 +280,7 @@
 
   #+END_SRC
 ** Functional Programing
-*** Haskell
+#*** Haskell
    #+BEGIN_SRC emacs-lisp
 
      (use-package haskell-mode
