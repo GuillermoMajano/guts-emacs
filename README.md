@@ -1,10 +1,13 @@
-# Griffith Emacs
-
-![Example4](/uploads/6cadb5e6ff35f85f7a9031cc912f0787/Example4.png)
-
-Simple setup for new emacs users
 
 # Instalation
+
+It is recommended to download the releases, since when cloning directly from the master branch there may be errors
+
+**Release installation**
+
+Just download the latest version of the releases and put everything in your "~ / .emacs.d"
+
+**Branch installation**
 
 Just copy and paste this command in your terminal
 
