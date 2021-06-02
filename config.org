@@ -72,27 +72,13 @@
  (add-to-list 'load-path (concat user-emacs-directory "elisp"))
  #+END_SRC
  
-* RPC
-** RPC
+* Discord Rich Presence
+** Discord Emacs
     #+BEGIN_SRC emacs-lisp
       (load-file "~/.emacs.d/elisp/discord-emacs.el")
       (discord-emacs-run "384815451978334208")
      #+END_SRC
-     
-* Git
-** Magit
-   #+BEGIN_SRC emacs-lisp
 
-  (use-package magit
-    :bind (("C-x g" . magit-status)
-	   ("C-M-;" . magit-status)))
-
-  (use-package magit-todos
-    :defer t)
-
-   #+END_SRC
-
-   
 * LSP
 ** lsp-mode
 #+BEGIN_SRC emacs-lisp
