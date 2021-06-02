@@ -170,139 +170,131 @@
 ** Web
 *** Frontend
 **** TypeScript
-#***** Lisp
    #+BEGIN_SRC emacs-lisp
-   (use-package typescript-mode
-     :mode "\\.ts\\'"                      
-     :hook (typescript-mode . lsp-deferred) 
-     :config                                
-   (setq typescript-indent-level 2))
+  ;; (use-package typescript-mode
+    ;; :mode "\\.ts\\'"                      
+    ;; :hook (typescript-mode . lsp-deferred) 
+   ;; :config                                
+  ;;  (setq typescript-indent-level 2))
   #+END_SRC
   
 **** JavaScript
    #+BEGIN_SRC emacs-lisp
-   (use-package js2-mode
-     :mode "\\.js\\'"
-     :hook (js2-mode . lsp-deferred))  
+ ;;  (use-package js2-mode
+ ;;    :mode "\\.js\\'"
+  ;;   :hook (js2-mode . lsp-deferred))  
   #+END_SRC
 
 **** HTML
    #+BEGIN_SRC emacs-lisp
-    (use-package web-mode 
-        :hook (html-mode . lsp-deferred)) 
+  ;;  (use-package web-mode 
+  ;;      :hook (html-mode . lsp-deferred)) 
   #+END_SRC
 
 **** CSS
      
    #+BEGIN_SRC emacs-lisp
-   (use-package css-mode
-     :hook (css-mode . lsp-deferred))
+;;   (use-package css-mode
+;;     :hook (css-mode . lsp-deferred))
   #+END_SRC   
 
 **** Vue.js
-#***** Lisp
   #+BEGIN_SRC emacs-lisp
 
- (use-package vue-mode
-   :mode "\\.vue\\'"
-   :config
-    (add-hook 'vue-mode-hook #'lsp))
+;;  (use-package vue-mode
+;;  :mode "\\.vue\\'"
+;;   :config
+;;    (add-hook 'vue-mode-hook #'lsp))
 
   #+END_SRC
   
 *** Backend
 **** PHP
-#***** Lisp
   #+BEGIN_SRC emacs-lisp
 
-  (use-package company-php
-  :defer
-  :after company)
+;;  (use-package company-php
+;;  :defer
+;;  :after company)
 
   #+END_SRC
 
 **** Go
-#***** Lisp
   #+BEGIN_SRC emacs-lisp
 
-  (use-package go-mode
-   :mode "\\.go\\'"
-   :config
-    (add-hook 'go-mode-hook #'lsp))
+;;  (use-package go-mode
+;;   :mode "\\.go\\'"
+;;   :config
+;;    (add-hook 'go-mode-hook #'lsp))
 
   #+END_SRC
   
 ** Low Level Programing
 *** C/C++
-#**** Lisp
+
    #+BEGIN_SRC emacs-lisp
 
-     (use-package c-mode
-       :ensure nil
-       :hook (c-mode . lsp-deferred))
+ ;;    (use-package c-mode
+ ;;      :ensure nil
+ ;;      :hook (c-mode . lsp-deferred))
 
     #+END_SRC
     
-*** Rust
-#**** Lisp
-    
+*** Rust    
    #+BEGIN_SRC emacs-lisp
 
-   (use-package rustic
-    :mode ("\\.rs\\'" . rustic-mode)
-    :hook (rustic-mode . lsp-deferred))
+;;   (use-package rustic
+;;    :mode ("\\.rs\\'" . rustic-mode)
+;;    :hook (rustic-mode . lsp-deferred))
 
     #+END_SRC
 
 ** Hight Level Programing
 *** Python
-#**** Lisp
     #+BEGIN_SRC emacs-lisp
 
-   (use-package python-mode
-     :ensure t
-       :defer t
-        :hook (python-mode . lsp-deferred)
-        :custom
-     (python-shell-interpreter "python3"))
+;;   (use-package python-mode
+;;     :ensure t
+;;       :defer t
+;;        :hook (python-mode . lsp-deferred)
+;;        :custom
+;;     (python-shell-interpreter "python3"))
 
-  (setq python-shell-interpreter "python3")
+;;  (setq python-shell-interpreter "python3")
 
     #+END_SRC
 *** Lua
-#**** Lisp
      #+BEGIN_SRC emacs-lisp
      
-    (use-package lua-mode
-     :ensure t)
+;;    (use-package lua-mode
+;;     :ensure t)
 
-    (use-package company-lua
-      :ensure t)
+;;    (use-package company-lua
+;;      :ensure t)
 
          #+END_SRC
 *** Ruby
-#**** Lisp
+
   #+BEGIN_SRC emacs-lisp
 
-    (use-package robe 
-      :ensure t
-      :after company
-      :config (add-to-list 'company-backends 'company-robe)
-	    (add-hook 'ruby-mode-hook 'robe-mode))
+;;    (use-package robe 
+;;      :ensure t
+;;      :after company
+;;      :config (add-to-list 'company-backends 'company-robe)
+;;	    (add-hook 'ruby-mode-hook 'robe-mode))
 
   #+END_SRC
 ** Functional Programing
 *** Haskell
-#**** Lisp
+
    #+BEGIN_SRC emacs-lisp
 
-     (use-package haskell-mode
-	    :hook (haskell-mode . #'lsp-deferred)
-	    :hook (haskell-literate-mode . #'lsp-deferred))
-	  (use-package lsp-haskell)
-	  ;; loading and unloading is slow, so just disabling
-	  (with-eval-after-load "flycheck"
-	    (add-to-list 'flycheck-disabled-checkers 'haskell-stack-ghc))
+;;     (use-package haskell-mode
+;;	    :hook (haskell-mode . #'lsp-deferred)
+;;	    :hook (haskell-literate-mode . #'lsp-deferred))
+;;	  (use-package lsp-haskell)
+;;	  ;; loading and unloading is slow, so just disabling
+;;	  (with-eval-after-load "flycheck"
+;;	    (add-to-list 'flycheck-disabled-checkers 'haskell-stack-ghc))
 
    #+END_SRC
 
