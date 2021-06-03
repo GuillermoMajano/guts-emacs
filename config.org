@@ -127,7 +127,7 @@
 *** Frontend
 **** TypeScript
    #+BEGIN_SRC emacs-lisp
-  (load-file "~/.emacs.d/elisp/Language/Web/Frontend/typescript.el")
+ ;; (load-file "~/.emacs.d/elisp/Language/Web/Frontend/typescript.el")
   #+END_SRC
   
 **** JavaScript
