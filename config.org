@@ -4,30 +4,31 @@
 ** Base  
 #+BEGIN_SRC emacs-lisp
 
-  (require 'package)
+    (require 'package)
 
-    (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-		  ("org" . "https://orgmode.org/elpa/")
-		 ("melpa" . "https://melpa.org/packages/")))
+      (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+		    ("org" . "https://orgmode.org/elpa/")
+		   ("melpa" . "https://melpa.org/packages/")))
 
-  (package-initialize)
-    (unless (package-installed-p 'use-package)
-      (package-refresh-contents)
-      (package-install 'use-package))
+    (package-initialize)
+      (unless (package-installed-p 'use-package)
+	(package-refresh-contents)
+	(package-install 'use-package))
 
-    (require 'use-package)
-    (setq use-package-always-ensure t)
+      (require 'use-package)
+      (setq use-package-always-ensure t)
 
-  (setq backup-directory-alist `(("." . "~/.saves")))
+    (setq backup-directory-alist `(("." . "~/.saves")))
 
-  (setq skeleton-pair t)
-  (global-set-key "[" 'skeleton-pair-insert-maybe)
-  (global-set-key "(" 'skeleton-pair-insert-maybe)
-  (global-set-key "{" 'skeleton-pair-insert-maybe)
-  (global-set-key "'" 'skeleton-pair-insert-maybe)
-  (global-set-key "\"" 'skeleton-pair-insert-maybe)
+    (setq skeleton-pair t)
+    (global-set-key "[" 'skeleton-pair-insert-maybe)
+    (global-set-key "(" 'skeleton-pair-insert-maybe)
+    (global-set-key "{" 'skeleton-pair-insert-maybe)
+    (global-set-key "'" 'skeleton-pair-insert-maybe)
+    (global-set-key "\"" 'skeleton-pair-insert-maybe)
+     (global-set-key "<" 'skeleton-pair-insert-maybe)
 
-(add-to-list 'load-path (concat user-emacs-directory "elisp"))
+  (add-to-list 'load-path (concat user-emacs-directory "elisp"))
 
 #+END_SRC
 ** Counsel
@@ -71,11 +72,11 @@
 #+BEGIN_SRC emacs-lisp
  (add-to-list 'load-path (concat user-emacs-directory "elisp"))
  #+END_SRC
- 
+
 * Discord Rich Presence
 ** Discord Emacs
     #+BEGIN_SRC emacs-lisp
-      (load-file "~/.emacs.d/elisp/discord-emacs.el")
+      (load-file "~/.emacs.d/Plugin/discord-emacs.el")
       (discord-emacs-run "384815451978334208")
      #+END_SRC
 
@@ -83,13 +84,7 @@
 ** lsp-mode
 #+BEGIN_SRC emacs-lisp
 
-  (use-package lsp-mode
-    :defer t
-    :commands (lsp lsp-deferred)
-    :init
-    (setq lsp-keymap-prefix "C-c l")
-    :config
-    (lsp-enable-which-key-integration t))
+(load-file "~/.emacs.d/elisp/LSP/lsp-mode.el")
 
 #+END_SRC
 
@@ -97,8 +92,7 @@
 
    #+BEGIN_SRC emacs-lisp
 
-     (use-package lsp-treemacs
-      :after lsp)
+(load-file "~/.emacs.d/elisp/LSP/lsp-treemacs.el")
 
    #+END_SRC
 
@@ -106,38 +100,15 @@
 
    #+BEGIN_SRC emacs-lisp
 
-  (use-package lsp-ui
-    :hook (lsp-mode . lsp-ui-mode)
-    :custom
-    (lsp-ui-doc-position 'bottom))
+(load-file "~/.emacs.d/elisp/LSP/lsp-ui.el")
 
    #+END_SRC
-
 
 * Autocomplete
 ** Company
 #+BEGIN_SRC emacs-lisp
 
-  (add-hook 'after-init-hook 'global-company-mode)
-  (use-package company
-    :after lsp-mode
-    ;; :hook (after-init-hook . global-company-mode)
-    :config
-    (company-tng-mode 0)
-    :custom (company-minimum-prefix-length 2)
-    :bind (:map company-active-map
-		("<tab>" . company-complete-selection))
-	  (:map lsp-mode-map
-		("<tab>" . company-indent-or-complete-common)))
-
-
-    (use-package company-anaconda 
-      :defer
-      :after company
-      :config (add-to-list 'company-backends 'company-anaconda))
-
-     (require 'company-lsp)
-      (push 'company-lsp company-backends)
+(load-file "~/.emacs.d/elisp/Autocomplete/company.el")
 
 #+END_SRC
 
@@ -151,66 +122,42 @@
 
     #+END_SRC
 
-    
 * Language
 ** Web
 *** Frontend
 **** TypeScript
    #+BEGIN_SRC emacs-lisp
-  ;; (use-package typescript-mode
-    ;; :mode "\\.ts\\'"                      
-    ;; :hook (typescript-mode . lsp-deferred) 
-   ;; :config                                
-  ;;  (setq typescript-indent-level 2))
+  (load-file "~/.emacs.d/elisp/Language/Web/Frontend/typescript.el")
   #+END_SRC
   
 **** JavaScript
    #+BEGIN_SRC emacs-lisp
- ;;  (use-package js2-mode
- ;;    :mode "\\.js\\'"
-  ;;   :hook (js2-mode . lsp-deferred))  
+   (load-file "~/.emacs.d/elisp/Language/Web/Frontend/javascript.el") 
   #+END_SRC
 
-**** HTML
+**** HTML/CSS
    #+BEGIN_SRC emacs-lisp
-  ;;  (use-package web-mode 
-  ;;      :hook (html-mode . lsp-deferred)) 
+  (load-file "~/.emacs.d/elisp/Language/Web/Frontend/web.el")
   #+END_SRC
 
-**** CSS
-     
-   #+BEGIN_SRC emacs-lisp
-;;   (use-package css-mode
-;;     :hook (css-mode . lsp-deferred))
-  #+END_SRC   
 
 **** Vue.js
   #+BEGIN_SRC emacs-lisp
-
-;;  (use-package vue-mode
-;;  :mode "\\.vue\\'"
-;;   :config
-;;    (add-hook 'vue-mode-hook #'lsp))
-
+;; (load-file "~/.emacs.d/elisp/Language/Web/Frontend/vue.el")
   #+END_SRC
   
 *** Backend
 **** PHP
   #+BEGIN_SRC emacs-lisp
 
-;;  (use-package company-php
-;;  :defer
-;;  :after company)
+;; (load-file "~/.emacs.d/elisp/Backend/php.el")
 
   #+END_SRC
 
 **** Go
   #+BEGIN_SRC emacs-lisp
 
-;;  (use-package go-mode
-;;   :mode "\\.go\\'"
-;;   :config
-;;    (add-hook 'go-mode-hook #'lsp))
+;; (load-file "~/.emacs.d/elisp/Language/Backend/go.el")
 
   #+END_SRC
   
@@ -219,18 +166,14 @@
 
    #+BEGIN_SRC emacs-lisp
 
- ;;    (use-package c-mode
- ;;      :ensure nil
- ;;      :hook (c-mode . lsp-deferred))
+;;(load-file "~/.emacs.d/elisp/Language/Low Level/c-c++.el")
 
     #+END_SRC
     
 *** Rust    
    #+BEGIN_SRC emacs-lisp
 
-;;   (use-package rustic
-;;    :mode ("\\.rs\\'" . rustic-mode)
-;;    :hook (rustic-mode . lsp-deferred))
+;;(load-file "~/.emacs.d/elisp/Language/Low Level/rust.el")
 
     #+END_SRC
 
@@ -238,35 +181,20 @@
 *** Python
     #+BEGIN_SRC emacs-lisp
 
-;;   (use-package python-mode
-;;     :ensure t
-;;       :defer t
-;;        :hook (python-mode . lsp-deferred)
-;;        :custom
-;;     (python-shell-interpreter "python3"))
-
-;;  (setq python-shell-interpreter "python3")
+;;(load-file "~/.emacs.d/elisp/Language/High Level/python.el")
 
     #+END_SRC
 *** Lua
      #+BEGIN_SRC emacs-lisp
      
-;;    (use-package lua-mode
-;;     :ensure t)
-
-;;    (use-package company-lua
-;;      :ensure t)
+;;(load-file "~/.emacs.d/elisp/Language/High Level/lua.el")
 
          #+END_SRC
 *** Ruby
 
   #+BEGIN_SRC emacs-lisp
 
-;;    (use-package robe 
-;;      :ensure t
-;;      :after company
-;;      :config (add-to-list 'company-backends 'company-robe)
-;;	    (add-hook 'ruby-mode-hook 'robe-mode))
+;;(load-file "~/.emacs.d/elisp/Language/High Level/ruby.el")
 
   #+END_SRC
 ** Functional Programing
@@ -274,17 +202,10 @@
 
    #+BEGIN_SRC emacs-lisp
 
-;;     (use-package haskell-mode
-;;	    :hook (haskell-mode . #'lsp-deferred)
-;;	    :hook (haskell-literate-mode . #'lsp-deferred))
-;;	  (use-package lsp-haskell)
-;;	  ;; loading and unloading is slow, so just disabling
-;;	  (with-eval-after-load "flycheck"
-;;	    (add-to-list 'flycheck-disabled-checkers 'haskell-stack-ghc))
+;;(load-file "~/.emacs.d/elisp/Language/Functional Programing/haskell.el")
 
    #+END_SRC
 
-  
 * GUI
 ** Guiclassic
    #+BEGIN_SRC emacs-lisp
@@ -296,84 +217,35 @@
 ** Theme
 #+BEGIN_SRC emacs-lisp
 
-  (use-package doom-themes
-  :config
-  (load-theme 'doom-city-lights t))
+ (load-file "~/.emacs.d/elisp/GUI/theme.el")
 
 #+END_SRC 
 ** Centaur Tabs
 #+BEGIN_SRC emacs-lisp
   
-  (use-package centaur-tabs
-   :ensure t
-   :config 
-   (setq  centaur-tabs-set-bar 'under
-	  x-underline-at-descent-line t
-          centaur-tabs-style "bar"
-          centaur-tabs-set-icons t
-          centaur-tabs-gray-out-icons 'buffer
-          centaur-tabs-height 40
-          centaur-tabs-set-modified-marker t
-          centaur-tabs-modifier-marker "*")
-   (centaur-tabs-mode t))
+(load-file "~/.emacs.d/elisp/GUI/centaurtabs.el")
 
 #+END_SRC 
 ** Treemacs
 #+BEGIN_SRC emacs-lisp
-
-  (use-package treemacs
-    :ensure t
-    :bind
-    (:map global-map
-	  ([f8] . treemacs-select-window)
-	  ("C-<f8>" . treemacs))
-    :config
-    (setq treemacs-is-never-other-window t))
-
-  (use-package treemacs-projectile
-    :after treemacs projectile
-    :ensure t)
-
-  (use-package treemacs-all-the-icons
-    :ensure t)
-
-  (treemacs-load-theme "all-the-icons")
-  (setq doom-themes-treemacs-theme "doom-colors")
-
-(dolist (mode '(treemacs-mode-hook))
-  (add-hook mode (lambda () (display-line-numbers-mode 0))))
-
+(load-file "~/.emacs.d/elisp/GUI/treemacs.el")
 #+END_SRC 
 ** Dashboard
 #+BEGIN_SRC emacs-lisp
  
- (use-package dashboard
-  :config
-  (setq dashboard-show-shortcuts nil)
-  (setq dashboard-center-content nil)
-  (setq dashboard-set-file-icons t)
-  (setq dashboard-set-heading-icons t)
-  (setq dashboard-startup-banner "~/.emacs.d/logo/logo.png")
-  (setq dashboard-banner-logo-title "In memory of a great, Kentarō Miura"))
-  (dashboard-setup-startup-hook)
+(load-file "~/.emacs.d/elisp/GUI/dashboard.el")
 
 #+END_SRC 
 ** Modeline
 #+BEGIN_SRC emacs-lisp
 
-(use-package moody
-  :config
-  (setq x-underline-at-descent-line t)
-  (moody-replace-mode-line-buffer-identification)
-  (moody-replace-vc-mode))
+(load-file "~/.emacs.d/elisp/GUI/modeline.el")
 
 #+END_SRC 
 ** Font
 #+BEGIN_SRC emacs-lisp
 
-(set-face-attribute 'default nil
-                    :family "Iosevka SS09"
-                    :height 120)
+(load-file "~/.emacs.d/elisp/GUI/font.el")
 
 #+END_SRC 
 
@@ -381,10 +253,7 @@
 ***  Number
 #+BEGIN_SRC emacs-lisp
 
-(use-package display-line-numbers
-  :ensure nil
-  :hook
-  ((prog-mode yaml-mode systemd-mode) . display-line-numbers-mode))
+(load-file "~/.emacs.d/elisp/GUI/displaynumber.el")
 
 #+END_SRC
 
