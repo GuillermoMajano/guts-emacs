@@ -1,3 +1,3 @@
- (use-package doom-themes
+ (use-package kaolin-themes
   :config
-  (load-theme 'doom-gruvbox t))
+  (load-theme 'kaolin-aurora t))

@@ -76,8 +76,9 @@
 * Discord Rich Presence
 ** Discord Emacs
     #+BEGIN_SRC emacs-lisp
-      (load-file "~/.emacs.d/Plugin/discord-emacs.el")
-      (discord-emacs-run "384815451978334208")
+(use-package elcord
+  :config
+  (elcord-mode))
      #+END_SRC
 
 * LSP
@@ -89,7 +90,7 @@
 #+END_SRC
 
 ** lsp-treemacs
-
+   
    #+BEGIN_SRC emacs-lisp
 
 (load-file "~/.emacs.d/elisp/LSP/lsp-treemacs.el")
@@ -127,41 +128,35 @@
 *** Frontend
 **** TypeScript
    #+BEGIN_SRC emacs-lisp
- ;; (load-file "~/.emacs.d/elisp/Language/Web/Frontend/typescript.el")
+  ;;(load-file "~/.emacs.d/elisp/Language/Web/Frontend/typescript.el")
   #+END_SRC
   
 **** JavaScript
    #+BEGIN_SRC emacs-lisp
-   (load-file "~/.emacs.d/elisp/Language/Web/Frontend/javascript.el") 
+   ;;(load-file "~/.emacs.d/elisp/Language/Web/Frontend/javascript.el") 
   #+END_SRC
-
-**** HTML/CSS
-   #+BEGIN_SRC emacs-lisp
-  (load-file "~/.emacs.d/elisp/Language/Web/Frontend/web.el")
-  #+END_SRC
-
 
 **** Vue.js
   #+BEGIN_SRC emacs-lisp
-;; (load-file "~/.emacs.d/elisp/Language/Web/Frontend/vue.el")
+ ;;(load-file "~/.emacs.d/elisp/Language/Web/Frontend/vue.el")
   #+END_SRC
   
 *** Backend
 **** PHP
   #+BEGIN_SRC emacs-lisp
 
-;; (load-file "~/.emacs.d/elisp/Backend/php.el")
+;; (load-file "~/.emacs.d/elisp/Language/Web/Backend/php.el")
 
   #+END_SRC
 
 **** Go
   #+BEGIN_SRC emacs-lisp
 
-;; (load-file "~/.emacs.d/elisp/Language/Backend/go.el")
+;; (load-file "~/.emacs.d/elisp/Language/Web/Backend/go.el")
 
   #+END_SRC
   
-** Low Level Programing
+** General Programing
 *** C/C++
 
    #+BEGIN_SRC emacs-lisp
