@@ -1,3 +1,5 @@
+#+TITLE: Griffith Emacs
+
 * Instalation
 
 It is recommended to download the releases, since when cloning directly from the master branch there may be errors
@@ -10,9 +12,9 @@ Just download the latest version of the releases and put everything in your "~ /
 
 Just copy and paste this command in your terminal
 
-```sh
+#+BEGIN_SRC
    git clone https://gitlab.com/matute_1/griffith-emacs.git  ~/.emacs.d
-   ```
+#+END_SRC
 
 * Dependences
 
