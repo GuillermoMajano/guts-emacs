@@ -1,0 +1,66 @@
+TRUE
+FALSE
+NONE
+<unsupported>
+<invalid>
+Code Signing
+E-mail Protection
+Invalidity Date
+OCSP Signing
+DVCS
+Any Extended Key Usage
+Microsoft Smartcardlogin
+Microsoft Trust List Signing
+Netscape Server Gated Crypto
+Strong Extranet ID
+Unspecified
+Remove From CRL
+Supersede
+
+# openssl/crypto/objects/obj_dat.h
+TLS Web Server Authentication
+TLS Web Client Authentication
+Code Signing
+E-mail Protection
+Time Stamping
+Microsoft Individual Code Signing
+Microsoft Individual Code Signing
+Microsoft Individual Code Signing
+Microsoft Commercial Code Signing
+Microsoft Trust List Signing
+Microsoft Server Gated Crypto
+Microsoft Encrypted File System
+Netscape Server Gated Crypto
+IPSec End System
+IPSec Tunnel
+IPSec User
+
+
+
+# openssl/crypto/x509v3/v3_bitst.c
+SSL Client
+SSL Server
+S/MIME
+Object Signing
+SSL CA
+S/MIME CA
+Object Signing CA
+Digital Signature
+Non Repudiation
+Key Encipherment
+Data Encipherment
+Key Agreement
+Certificate Sign
+CRL Sign
+Encipher Only
+Decipher Only
+
+# openssl/crypto/x509v3/v3_crld.c
+Key Compromise
+CA Compromise
+Affiliation Changed
+Superseded
+Cessation Of Operation
+Certificate Hold
+Privilege Withdrawn
+AA Compromise

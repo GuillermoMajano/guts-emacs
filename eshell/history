@@ -1,0 +1,128 @@
+go run ./cmd/web
+go run ./cmd/web
+go run ./cmd/web
+go run ./cmd/web
+go run ./cmd/web
+go run ./cmd/web
+go run ./cmd/web
+go run ./cmd/web
+go run ./cmd/web
+go run ./cmd/web
+cd ../..
+go run ./cmd/web/
+go run ./cmd/web/
+go run ./cmd/web/
+go run ./cmd/web/
+go run ./cmd/web/
+go run ./cmd/web/
+go run ./cmd/web/
+go run ./cmd/web/
+go run ./cmd/web/
+go run ./cmd/web/
+go run ./cmd/web/
+go run ./cmd/web/
+clear 
+clear-scrollback 
+go run ./cmd/web/
+git remote add origin git@github.com:GuillermoMajano/tiny-box.gi
+git@github.com:GuillermoMajano/tiny-box.git
+git git@github.com:GuillermoMajano/tiny-box.git
+echo "# tiny-box" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git config --global user.email "jmajano95@gmail.com"
+git config --global user.name "Guillermomajano"
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/GuillermoMajano/tiny-box.git
+git push -u origin main
+git remote add origin git@github.com:GuillermoMajano/tiny-box.git
+git remote remove origin
+git remote add origin git@github.com:GuillermoMajano/tiny-box.git
+git push -u origin main
+ls
+git push -u origin main
+git push -u origin main
+git remote add origin
+ls
+rm -f README.md
+clear
+clear-scrollback
+git init
+git remote add origin git@github.com:GuillermoMajano/tiny-box.git
+git remote origin
+git remove origin 
+git push -u origin main
+clear
+git push -u origin main
+git add -u
+git commit ...
+git reset HEAD~
+git reset
+git init
+git reset
+git reset README.md
+git push -u origin master
+$git init
+git init
+git branch
+git branch main
+git branch -d main 
+git push origin --delete main
+git fetch -p
+git branch -D main
+git branch -d main
+git branch
+git branch --no-merged
+git branch -D main
+git show-branch
+git checkout main
+git show-branch
+git branch -D main
+git branch -d main
+git push -u origin
+git push --set-upstream origin main
+git pull
+git pull remote main
+git pull git@github.com:GuillermoMajano/tiny-box.git main
+git branch
+git push origin main
+git branch -d nombre_rama
+git branch -d main
+git branch -D main
+clear-scrollback
+cd ../..
+go run ./cmd/web
+go run ./cmd/web
+go run ./cmd/web
+go run ./cmd/web
+git push
+git push origin HEAD:main
+git rebase
+git commit "bug in snippet"
+git status
+git commit -a "fixed bug"
+git branch
+git checkout
+git checkout merge
+git pull
+git push
+git push origin HEAD:main
+git pull
+git status
+git add helpers.go
+go run ./cmd/web
+go run ./cmd/web
+go run ./cmd/web
+go run ./cmd/web
+go run ./cmd/web
+cd ../..
+touch cmd/web/middleware.go
+go run ./cmd/web
+go run ./cmd/web
+cd ../..
+go run ./cmd/web/
+clear-scrollback 
+ls 
+clear-scrollback 

@@ -4,6 +4,6 @@
   (setq dashboard-center-content nil)
   (setq dashboard-set-file-icons t)
   (setq dashboard-set-heading-icons t)
-  (setq dashboard-startup-banner "~/.emacs.d/logo/logo.png")
-  (setq dashboard-banner-logo-title "In memory of a great, Kentarō Miura"))
+  (setq dashboard-startup-banner "~/.emacs.d/logo/gust_logo.png")
+  (setq dashboard-banner-logo-title "Falling Moon"))
   (dashboard-setup-startup-hook)

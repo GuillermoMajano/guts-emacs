@@ -75,11 +75,7 @@
 
 * Discord Rich Presence
 ** Discord Emacs
-    #+BEGIN_SRC emacs-lisp
-(use-package elcord
-  :config
-  (elcord-mode))
-     #+END_SRC
+
 
 * LSP
 ** lsp-mode
